@@ -31,5 +31,8 @@ int main()  //²åÈëÅÅĞòÉıĞòÊä³ö
         }
     }
     for(i=0; i<x; i++)cout<<ans[i]<<endl;
+    delete []ans;
+    fclose(stdin);
+    fclose(stdout);
     return 0;
 }
