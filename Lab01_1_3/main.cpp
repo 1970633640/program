@@ -12,8 +12,15 @@ void swap(a,b)
 void quicksort(ans[],left,right)
 {
     int l=left,r=right,key=ans[left];
-    int m=left;
+while(l<r)
+{
+while(l<r && ans[l]<=key)l++;
+while(l<r && ans[r]>=key)r--;
 
+
+
+
+}
 
 
 
