@@ -64,6 +64,7 @@ int main()  //归并排序
     separate(ans,0,x-1,after);
     for(i=0; i<x; i++)cout<<ans[i]<<endl;
     delete []ans;
+    delete []after;
     fclose(stdin);
     fclose(stdout);
     return 0;
