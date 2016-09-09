@@ -1,15 +1,15 @@
-﻿#include <iostream>
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
-void swap(a,b)
+void swap(int a,int b)
 {
     int temp=a;
     a=b;
     b=temp;
 }
 
-void quicksort(ans[],left,right)
+void quicksort(int ans[],int left,int right)
 {
     int l=left,r=right,key=ans[left];
 while(l<r)
