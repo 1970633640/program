@@ -2,34 +2,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
-void swap(int a,int b)
-{
-    int temp=a;
-    a=b;
-    b=temp;
-}
 
 void quicksort(int ans[],int left,int right)
 {
+    if (left>=right)return ;
     int l=left,r=right,key=ans[left];
-while(l<r)
-{
-while(l<r && ans[l]<=key)l++;
-while(l<r && ans[r]>=key)r--;
+    while(l<r)
+    {
+        while(l<r && ans[r]>=key)r--;
+        ans[l]=ans[r];
 
-
-
-
-}
-
-
-
-
-
-
-
+        while(l<r && ans[l]<=key)l++;
+        ans[r]=ans[l];
+    }
+    ans[l]=key;
+    quicksort(ans,left,l-1);
+    quicksort(ans,l+1,right);
 
 }
+
 int main()
 {
     freopen ("data1w.txt", "r", stdin);
@@ -42,7 +33,8 @@ int main()
         cin>>key;
         ans[i]=key;
     }
-
+    quicksort(ans,0,x-1);
+    for(i=0; i<x; i++)cout<<ans[i]<<endl;
     delete []ans;
     fclose(stdin);
     fclose(stdout);
