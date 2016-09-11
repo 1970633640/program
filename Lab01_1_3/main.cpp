@@ -23,7 +23,7 @@ void quicksort(int ans[],int left,int right)
 
 int main()
 {
-    freopen ("data1w.txt", "r", stdin);
+    freopen ("data1m.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
     int i,x,key;
     cin>>x;

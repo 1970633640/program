@@ -50,7 +50,7 @@ void separate (int ans[],int left,int  right,int after[])  //拆
 }
 int main()  //归并排序
 {
-    freopen ("data1w.txt", "r", stdin);
+    freopen ("data1m.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
     int temp,key,x,i,j;
     cin>>x;

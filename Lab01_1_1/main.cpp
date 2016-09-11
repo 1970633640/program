@@ -5,7 +5,7 @@ using namespace std;
 
 int main()  //²åÈëÅÅÐòÉýÐòÊä³ö
 {
-    freopen ("data1w.txt", "r", stdin);
+    freopen ("data1m.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
     int temp,key,x,i,j;
     cin>>x;
