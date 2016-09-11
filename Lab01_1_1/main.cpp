@@ -17,14 +17,14 @@ int main()  //插入排序升序输出
     }
     for(i=1; i<x; i++)
     {
-        if(ans[i]<ans[i-1])
+        if(ans[i]<ans[i-1])   //位置不对
         {
             temp=ans[i];
             j=i;
             ans[j]=ans[j-1];
             while(j>0 && temp<ans[j])
             {
-                j--;
+                j--;    //直到找到目标之前每个数字移动一格
                 ans[j]=ans[j-1];
             }
             ans[j]=temp;
