@@ -4,26 +4,27 @@
 
 using namespace std;
 #include "HugeInt.h"
-int main()  //朴素多项式计算
+int main()  //第二种多项式计算
 {
     freopen ("data100.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
-    int i,x;
+    int j,i,x;
     HugeInt ans=0;
-HugeInt key;
+    int * key= new int [x];
     ans=0;
     cin>>x;
-i=x-1;
-  while(i>=0)
+    i=x-1;
+    for(j=0;j<x;j++)cin>>key[j];
+    while(i>=0)
     {
-        cin>>key;
-ans=3*ans;
-ans=key+ans;
-i--;
+
+        ans=3 * ans;
+        ans=ans + key[i];
+        i--;
     }
 
     cout<<ans;
-
+delete [] key;
     fclose(stdin);
     fclose(stdout);
     return 0;
