@@ -8,19 +8,18 @@ int main()  //朴素多项式计算
 {
     freopen ("data100.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
-    int i,j,x,key;
-    HugeInt ans;
-    HugeInt threepow;
+    int i,x;
+    HugeInt ans=0;
+HugeInt key;
     ans=0;
     cin>>x;
-
-    for(i=0; i<x; i++)
+i=x-1;
+  while(i>=0)
     {
         cin>>key;
-        threepow=1;
-        for(j=0; j<i; j++)threepow=threepow*3;
-        threepow=threepow*key;
-        ans=ans+threepow;
+ans=3*ans;
+ans=key+ans;
+i--;
     }
 
     cout<<ans;
