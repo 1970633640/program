@@ -330,7 +330,7 @@ int HugeInt::digit()
 }
 void HugeInt::print()
 {
-    cout<<num<<"("<<digit()<<"digits)";
+    cout<<num;
 }
 HugeInt::HugeInt(long long int a)
 {
