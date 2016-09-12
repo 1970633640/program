@@ -6,7 +6,7 @@ using namespace std;
 #include "HugeInt.h"
 int main()  //第二种多项式计算
 {
-    freopen ("data100.txt", "r", stdin);
+    freopen ("data1w.txt", "r", stdin);
     freopen ("output.txt", "w", stdout);
     int j,i,x;
     HugeInt ans=0;
