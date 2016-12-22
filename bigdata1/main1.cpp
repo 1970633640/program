@@ -54,6 +54,7 @@ int Hash(char *str){
 	}
 	return ans;
 }
+
 FILE *fout;
 typedef struct Vec{
 	char s[filenum+10][80];
@@ -127,6 +128,7 @@ int main(int argc, char const *argv[])
 		}
 		fclose(fin);
 	}
+
 
 
 	fout=fopen("task1.txt","w");
