@@ -6,6 +6,7 @@
 //#include <hash_set>
 //#include <array>
 #include <fstream>
+
 using namespace std;
 string query[30]; //允许最大关键词=30
 char cquery[30][15]; //char版查询词
@@ -21,8 +22,6 @@ int ansfindsum;
 int len;//小文件长度
 int main()
 {
-    long long int c;
-    int cc;
     ifstream qin;
     qin.open("query_task1.txt");
     string x;
@@ -55,16 +54,16 @@ int main()
 
         while(!feof(fin))
         {
-fscanf(fin,"%s",com);
-                for(int j=0; j<=querysum; ++j) //j=0-29
-                    if(!ansfind[j] && strcmp( com,cquery[j] )==0 )
-                    {
-                        ans[j][i]=true;
-                        ++ansfindsum;
-                        ansfind[j]=true;
-                        if(ansfindsum==querysum)goto eee;
-                    }
-            }
+            fscanf(fin,"%s",com);
+            for(int j=0; j<=querysum; ++j) //j=0-29
+                if(!ansfind[j] && strcmp( com,cquery[j] )==0 )
+                {
+                    ans[j][i]=true;
+                    ++ansfindsum;
+                    ansfind[j]=true;
+                    if(ansfindsum==querysum)goto eee;
+                }
+        }
 
 eee:
         fclose(fin);
@@ -72,7 +71,6 @@ eee:
 
     ofstream fout;
     fout.open("Task1.txt");
-    DWORD start_time=GetTickCount();
     int i,j;
     for(i=0; i<=querysum; ++i)
     {
@@ -80,8 +78,6 @@ eee:
         for( j=0; j<=filesum; ++j)
             if(ans[i][j])fout<<i+1<<"  report"<< j <<".xml "<<qs<<endl;
     }
-    DWORD end_time=GetTickCount();
-    cout<<"The output time is:"<<(end_time-start_time)<<"ms!"<<endl;//输出运行时间
     fout.close();
 //delete []buf;
     return 0;
