@@ -1,10 +1,7 @@
 #include <iostream>
-//#include <pthread.h> //多线程相关操作头文件，可移植众多平台
 #include <stdio.h>
 #include <cstring>
 #include<windows.h>
-//#include <hash_set>
-//#include <array>
 #include <fstream>
 
 using namespace std;
@@ -14,20 +11,33 @@ int querysum=-1; //从零开始
 #define filesum 101710//元素总数钦定0~101710
 const int MAXN = 20000;//钦定文件最大20000字节
 //#define filesum 1000
-bool ans[30][filesum];
-bool ansfind[30];
+int ans[30][filesum];
 char fname[48];//小文件名字
-
+typedef struct node
+{
+  //  char astr[15];
+    int times;
+    int filenum;
+}node;
 int ansfindsum;
 int len;//小文件长度
+node ansnode[30][30000];
+int cmp(const void * a,const void * b)
+{
+    if(   (*(node *)b).times != (*(node *)a).times )
+        return  (*(node *)b).times - (*(node *)a).times;
+    else return  (*(node *)a).filenum-(*(node *)b).filenum;
+}
+
+
 int main()
 {
     ifstream qin;
-    qin.open("query_task1.txt");
+    qin.open("query_task3.txt");
     string x;
+
     while(qin>>x)
     {
-
         query[++querysum]=x;
         strcpy(cquery[querysum],query[querysum].c_str());
     }
@@ -43,41 +53,34 @@ int main()
         //  printf("%s\n",fname);
         fin=fopen(fname,"rb");
         if(fin==NULL) printf("NULL\n");
-        //          fseek (fin , 0 , SEEK_END);
-//   len = ftell (fin);
-//   rewind (fin);
-//fread(buf,1,len,fin);
-//buf[len]='\0';
-        //  fclose(fin);
 
-        memset(ansfind,0,sizeof(ansfind));
-        ansfindsum=-1;
+
+
 
         while(!feof(fin))
         {
             fscanf(fin,"%s",com);
             for(int j=0; j<=querysum; ++j) //j=0-29
-                if(!ansfind[j] && strcmp( com,cquery[j] )==0 )
+                if( strcmp( com,cquery[j] )==0 )
                 {
-                    ans[j][i]=true;
-                    ++ansfindsum;
-                    ansfind[j]=true;
-                    if(ansfindsum==querysum)goto eee;
+                    ++ans[j][i];
                 }
         }
 
-eee:
-        fclose(fin);
+fclose(fin);
     }
-
+int sum2;
     ofstream fout;
-    fout.open("Task1.txt");
+    fout.open("Task3.txt");
     int i,j;
     for(i=0; i<=querysum; ++i)
-    {
-        string qs=query[i];
+    {sum2=-1;
         for( j=0; j<=filesum; ++j)
-            if(ans[i][j])fout<<i+1<<"  report"<< j <<".xml "<<qs<<endl;
+            if(ans[i][j]){ansnode[i][++sum2].times=ans[i][j];ansnode[i][sum2].filenum=j;  }
+            qsort(ansnode[i],sum2+1,sizeof(ansnode[i][0]),cmp);
+            int sum1=0;
+            for(int k=0;k<=sum2;++k)
+                fout<<i+1<<" report" <<ansnode[i][k].filenum<<".xml "<<++sum1<<" "<<query[i]<<endl;
     }
     fout.close();
 //delete []buf;
